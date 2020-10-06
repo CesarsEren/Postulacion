@@ -1,0 +1,77 @@
+<!--<ul>
+  <li *ngFor="let categoria of categorias">
+    {{categoria.cardTitle}}
+  </li>
+</ul>-->
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>{{title}}</h1>
+      </div>
+      <div class="col-sm-6">
+        <span class="breadcrumb float-sm-right">
+          <a class="btn btn-success">
+            <i class="text-white fas fa-plus"></i>
+          </a>
+        </span>
+        <!--<ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">{{title}}</li>
+          </ol>-->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content"> 
+  <div class="card m-2">
+    <!-- <div class="card-header">
+     <h3 class="card-title">Projects</h3>
+      <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+          <i class="fas fa-minus"></i></button>
+        <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+          <i class="fas fa-times"></i></button>
+      </div> 
+    </div>-->
+    <div class="card-body p-2 ">
+      <table class="table table-striped projects">
+        <thead>
+          <tr>
+            <th class="text-center" style="width: 20%">
+              Imagem
+            </th>
+            <th class="text-center" style="width: 20%">
+              Título
+            </th>
+            <th class="text-center" style="width: 20%">
+              Sub Título
+            </th>
+            <th class="text-center" style="width: 20%">
+              Total Produtos
+            </th>
+            <th class="text-center" style="width: 20%">
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let categoria of categorias">
+            <td class="text-center"><img src="{{categoria.imagem}}" alt="{{categoria.cardTitle}}"></td>
+            <td class="text-center">{{categoria.cardTitle}}</td>
+            <td class="text-center">{{categoria.cardSubtitle}}</td>
+            <td class="text-center">{{categoria.menu.length}}</td>
+            <td class="text-center">
+              <a class="btn btn-info m-2">
+                <i class="text-white fas fa-edit"></i>
+              </a>
+              <a class="btn btn-danger m-2">
+                <i class="text-white fas fa-trash"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

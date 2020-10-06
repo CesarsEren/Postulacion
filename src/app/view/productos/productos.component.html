@@ -1,0 +1,79 @@
+<section class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1>{{title}}</h1>
+      </div>
+      <div class="col-sm-6">
+        <span class="breadcrumb float-sm-right">
+          <a class="btn btn-success">
+            <i class="text-white fas fa-plus"></i>
+          </a>
+        </span>
+        <!--<ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">{{title}}</li>
+          </ol>-->
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="content">
+  <div class="card m-2">
+    <div class="card-header">
+      <h3 class="card-title">{{seleccionado}}</h3>
+      <div class="card-tools">
+        <span class="mr-1">Categoria : </span>
+        <select [(ngModel)]="seleccionado">
+          <option [ngValue]="categoria.cardTitle" *ngFor="let categoria of categorias">{{categoria.cardTitle}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="card-body p-2 ">
+      <table class="table table-striped projects">
+        <thead>
+          <tr>
+            <th class="text-center" style="width: 10%">
+              Imagem
+            </th>
+            <th class="text-center" style="width: 20%">
+              Nome
+            </th>
+            <th class="text-center" style="width: 30%">
+              Descrição
+            </th>
+            <th class="text-center" style="width: 20%">
+              Preço
+            </th>
+            <th class="text-center" style="width: 20%">
+            </th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let categoria of categorias">
+          <tr *ngFor="let cate of categoria.menu">
+            <ng-container *ngIf="categoria.cardTitle == seleccionado">
+              <td class="text-center">
+                {{cate.imagePath}}
+              </td>
+              <td class="text-center">{{cate.name}}</td>
+              <td class="text-center">{{cate.description}}</td>
+              <td class="text-center">{{cate.price}}</td>
+              <td class="text-center">
+                <a class="btn btn-info m-2">
+                  <i class="text-white fas fa-edit"></i>
+                </a>
+                <a class="btn btn-danger m-2">
+                  <i class="text-white fas fa-trash"></i>
+                </a>
+              </td>
+
+            </ng-container>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
