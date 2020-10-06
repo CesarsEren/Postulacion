@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DatabaseService } from "src/app/servicios/database.service";
+import { UsuariosService } from 'src/app/servicios/usuarios.service';
 
 @Component({
   selector: "app-usuarios",
@@ -11,11 +12,11 @@ export class UsuariosComponent implements OnInit {
 
   title: String = "Usuarios";
   
-  constructor(private db: DatabaseService) {}
+  constructor(private db: UsuariosService) {}
 
   ngOnInit() {
-    this.db.GetJson().subscribe((data) => {
-      this.usuarios = data.users;
+    this.db.getUsuarios().subscribe((data) => {
+      this.usuarios = data;
     });
   }
 }

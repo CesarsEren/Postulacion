@@ -139,5 +139,12 @@
       }
     }
   },
-  "defaultProject": "PesquisaQualidade-WEB"
+  "defaultProject": "PesquisaQualidade-WEB",
+  "schematics": {
+    "@schematics/angular": {
+      "component": {
+        "spec": false
+      }
+    }
+  }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Category } from 'src/app/model/category.interface';
+import { CategoriasService } from 'src/app/servicios/categorias.service';
 import { DatabaseService } from 'src/app/servicios/database.service';
 
 @Component({
@@ -7,17 +9,15 @@ import { DatabaseService } from 'src/app/servicios/database.service';
   styleUrls: ['./productos.component.css']
 })
 export class ProductosComponent implements OnInit {
-  categorias: any = [];
-  
-  title:String="Produtos";
-  seleccionado="";
-  constructor(private db: DatabaseService) { }
-
-  ngOnInit() { 
-    this.db.GetJson().subscribe((data) => {
+  categorias: Category[];
+  title: String = "Produtos";
+  seleccionado = "";
+  constructor(private db: CategoriasService) { }
+  ngOnInit() {
+    this.db.getCategorias().subscribe((data) => {
       //console.log(data.category);
-      this.categorias = data.category;
-      this.seleccionado=this.categorias[0].cardTitle;
+      this.categorias = data;
+      this.seleccionado = this.categorias[0].cardTitle;
     });
   }
 
