@@ -176,45 +176,45 @@
   ],
   "ordersList": [
     {
-      "id":"EraS7rbywDPC1d2HSD10",
-      "date":"2019-09-06T12:50:48.567Z",
-      "userEmail":"vinicius@tolentinos.com",
-      "value":28.1,
-      "items":[
+      "id": "EraS7rbywDPC1d2HSD10",
+      "date": "2019-09-06T12:50:48.567Z",
+      "userEmail": "vinicius@tolentinos.com",
+      "value": 28.1,
+      "items": [
         {
-          "menuItem":{
-            "id":"cup-cake",
-            "description":"Cup Cake recheado de Doce de Leite",
-            "imagePath":"assets/imgs/foods/cupcake.png",
-            "name":"Cup Cake",
-            "price":8.7
+          "menuItem": {
+            "id": "cup-cake",
+            "description": "Cup Cake recheado de Doce de Leite",
+            "imagePath": "assets/imgs/foods/cupcake.png",
+            "name": "Cup Cake",
+            "price": 8.7
           },
-          "quantity":1
+          "quantity": 1
         },
         {
-          "menuItem":{
-            "id":"coke",
-            "description":"O refri mais gelado da cidade.",
-            "imagePath":"assets/imgs/foods/coke.png",
-            "name":"Refrigerante",
-            "price":4.5
+          "menuItem": {
+            "id": "coke",
+            "description": "O refri mais gelado da cidade.",
+            "imagePath": "assets/imgs/foods/coke.png",
+            "name": "Refrigerante",
+            "price": 4.5
           },
-          "quantity":1
+          "quantity": 1
         },
         {
-          "menuItem":{
-            "id":"lasagna",
-            "description":"Lasagna deliciosa que se salva por causa do queijo",
-            "imagePath":"assets/imgs/foods/zlasagna.png",
-            "name":"Lasagna de Zucchini",
-            "price":14.9
+          "menuItem": {
+            "id": "lasagna",
+            "description": "Lasagna deliciosa que se salva por causa do queijo",
+            "imagePath": "assets/imgs/foods/zlasagna.png",
+            "name": "Lasagna de Zucchini",
+            "price": 14.9
           },
-          "quantity":1
+          "quantity": 1
         }
       ]
     }
   ],
-  "users":[
+  "users": [
     {
       "uid": "hUvH6neQnWPkwWL9zM4bcAwYspn2",
       "id": 1,
@@ -224,7 +224,16 @@
       "photoUrl": "https://yt3.ggpht.com/a/AGF-l7-lMrFMc6BpALelxfEgJamXwG4LSQnumwnZng=s900-mo-c-c0xffffffff-rj-k-no",
       "location": "Belo Horizonte",
       "points": 0,
-      "settingsUser": { "language": "pt-br", "type": "client" }
+      "settingsUser": {
+        "language": "pt-br",
+        "type": "client"
+      }
+    },
+    {
+      "email": "aaaa",
+      "cardSubtitle": "2222",
+      "imagem": "aaaaa",
+      "id": 2
     }
   ]
 }

@@ -14,4 +14,8 @@ export class UsuariosService {
   public getUsuarios(): Observable<User[]> {
     return this.http.get<User[]>(`${FACELIST_API}/users`);
   }
+  public addUser(data:User):void
+  {
+    this.http.post(`${FACELIST_API}/users`,data);
+  }
 }

@@ -26,15 +26,6 @@
 
 <section class="content">
   <div class="card m-2">
-    <!-- <div class="card-header">
-     <h3 class="card-title">Projects</h3>
-      <div class="card-tools">
-        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-          <i class="fas fa-minus"></i></button>
-        <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-          <i class="fas fa-times"></i></button>
-      </div> 
-    </div>-->
     <div class="card-body p-2 ">
       <table class="table table-striped projects">
         <thead>
@@ -62,10 +53,10 @@
             <td class="text-center">{{categoria.cardSubtitle}}</td>
             <td class="text-center">{{categoria.menu.length}}</td>
             <td class="text-center">
-              <a class="btn btn-info m-2">
+              <a href="javascript:void(0);" class="btn btn-info m-2">
                 <i class="text-white fas fa-edit"></i>
               </a>
-              <a class="btn btn-danger m-2">
+              <a href="javascript:void(0);" class="btn btn-danger m-2" (click)="delete(categoria.id)">
                 <i class="text-white fas fa-trash"></i>
               </a>
             </td>
@@ -86,27 +77,27 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
               aria-hidden="true">&times;</span></button>
         </div>
-        <div class="modal-body"> 
+        <div class="modal-body">
           <div class="form-group">
-            <label for="exampleInputEmail1">cardTitle</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="email"
-              placeholder="cardTitle">
+            <label for="cardTitle">cardTitle</label>
+            <input type="text" class="form-control" id="cardTitle" formControlName="cardTitle"
+              aria-describedby="emailHelp" placeholder="cardTitle">
+            <small id="emailHelp" class="d-none form-text text-danger">Ingrese el Título.</small>
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">cardSubtitle</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" formControlName="cardSubtitle"
+            <label for="cardSubtitle">cardSubtitle</label>
+            <input type="email" class="form-control" id="cardSubtitle" formControlName="cardSubtitle"
               placeholder="cardSubtitle">
           </div>
           <div class="form-group">
-            <label for="exampleInputEmail1">imagem</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" formControlName="imagem"
-              placeholder="imagem">
+            <label for="imagem">imagem</label>
+            <input type="text" class="form-control" id="imagem" formControlName="imagem" placeholder="imagem">
           </div>
 
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Guardar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
         </div>
       </div>
     </form>
