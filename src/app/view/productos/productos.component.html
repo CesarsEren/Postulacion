@@ -6,14 +6,10 @@
       </div>
       <div class="col-sm-6">
         <span class="breadcrumb float-sm-right">
-          <a class="btn btn-success">
+          <button class="btn btn-success" data-toggle="modal" data-target="#myModal">
             <i class="text-white fas fa-plus"></i>
-          </a>
+          </button>
         </span>
-        <!--<ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">{{title}}</li>
-          </ol>-->
       </div>
     </div>
   </div>
@@ -53,19 +49,19 @@
           </tr>
         </thead>
         <tbody *ngFor="let categoria of categorias">
-          <tr *ngFor="let cate of categoria.menu">
+          <tr *ngFor="let producto of categoria.menu">
             <ng-container *ngIf="categoria.cardTitle == seleccionado">
               <td class="text-center">
-                {{cate.imagePath}}
+                <img src="{{producto.imagePath}}" alt="{{producto.imagePath}}">
               </td>
-              <td class="text-center">{{cate.name}}</td>
-              <td class="text-center">{{cate.description}}</td>
-              <td class="text-center">{{cate.price}}</td>
+              <td class="text-center">{{producto.name}}</td>
+              <td class="text-center">{{producto.description}}</td>
+              <td class="text-center">{{producto.price}}</td>
               <td class="text-center">
-                <a class="btn btn-info m-2">
+                <a href="javascript:void(0);" class="btn btn-info m-2">
                   <i class="text-white fas fa-edit"></i>
                 </a>
-                <a class="btn btn-danger m-2">
+                <a href="javascript:void(0);" class="btn btn-danger m-2" (click)="delete(categoria.id,producto.id)">
                   <i class="text-white fas fa-trash"></i>
                 </a>
               </td>
@@ -77,3 +73,60 @@
     </div>
   </div>
 </section>
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <form [formGroup]="productoform" (ngSubmit)="submit()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Agregar Producto</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="id">Id</label>
+            <input type="text" class="form-control" id="id" formControlName="id" aria-describedby="id" placeholder="id">
+            <!--<small id="name" class="d-none form-text text-danger">Ingrese el Título.</small>-->
+          </div>
+
+          <div class="form-group">
+            <label for="cardTitle">Nombre</label>
+            <input type="text" class="form-control" id="name" formControlName="name" aria-describedby="name"
+              placeholder="name">
+            <!--<small id="name" class="d-none form-text text-danger">Ingrese el Título.</small>-->
+          </div>
+          <div class="form-group">
+            <label for="cardSubtitle">Descripcion</label>
+            <input type="email" class="form-control" id="cardSubtitle" formControlName="description"
+              placeholder="description">
+          </div>
+          <div class="form-group">
+            <label for="cardSubtitle">Categoria</label>
+            <select class="form-control" id="categoria" formControlName="categoria">
+              <option [ngValue]="categoria.id" *ngFor="let categoria of categorias">{{categoria.cardTitle}}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="imagePath">Imagen</label>
+            <input type="text" class="form-control" id="imagePath" formControlName="imagePath" placeholder="Url Imagen">
+          </div>
+
+          <div class="form-group">
+            <label for="price">Precio</label>
+            <input type="number" class="form-control" id="price" formControlName="price" placeholder="price">
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

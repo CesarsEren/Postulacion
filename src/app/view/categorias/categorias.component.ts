@@ -19,6 +19,7 @@ export class CategoriasComponent implements OnInit {
       cardTitle: ["", [Validators.required]],
       cardSubtitle: ["", [Validators.required]],
       imagem: ["", [Validators.required]],
+      menu:{}
     });
   }
   title: String = "Categorias";
@@ -42,7 +43,9 @@ export class CategoriasComponent implements OnInit {
 
   submit() {
     //if (this.categoryform.valid) {
-    this.db.addCategory(this.categoryform.getRawValue()).subscribe(
+      this.category = this.categoryform.getRawValue();
+      this.category.menu = [];
+    this.db.addCategory(this.category).subscribe(
       (res) => {
         console.log(res);
         this.Listcategorias();
