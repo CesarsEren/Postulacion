@@ -1,0 +1,10 @@
+### Rest Client Extensión
+## https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
+//GET CATEGORIAS
+GET http://localhost:3000/category
+
+################################
+
+//GET CATEGORIA
+GET http://localhost:3000/category/7

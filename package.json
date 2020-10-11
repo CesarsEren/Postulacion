@@ -58,7 +58,7 @@
     "select2": "^4.0.7",
     "sparklines": "^1.2.0",
     "summernote": "^0.8.12",
-    "sweetalert2": "^8.12.1",
+    "sweetalert2": "^9.11.0",
     "tempusdominus-bootstrap-4": "^5.1.2",
     "toastr": "^2.1.4",
     "tslib": "^1.9.0",

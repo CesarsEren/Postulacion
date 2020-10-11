@@ -20,13 +20,16 @@
 <section class="content">
   <div class="card m-2">
     <div class="card-header">
-      <h3 class="card-title">{{seleccionado}}</h3>
+      <h3 class="card-title">{{db.seleccionado?.cardTitle}}</h3>
       <div class="card-tools">
         <span class="mr-1">Categoria : </span>
-        <select [(ngModel)]="seleccionado">
-          <option [ngValue]="categoria.cardTitle" *ngFor="let categoria of categorias">{{categoria.cardTitle}}</option>
+        <select [(ngModel)]="db.seleccionado">
+          <option *ngFor="let categoria of db.categorias" [ngValue]="categoria">
+            {{categoria.cardTitle}}
+          </option>
         </select>
       </div>
+
     </div>
     <div class="card-body p-2 ">
       <table class="table table-striped projects">
@@ -48,24 +51,23 @@
             </th>
           </tr>
         </thead>
-        <tbody *ngFor="let categoria of categorias">
+        <tbody *ngFor="let categoria of db.categorias">
           <tr *ngFor="let producto of categoria.menu">
-            <ng-container *ngIf="categoria.cardTitle == seleccionado">
+            <ng-container *ngIf="categoria.cardTitle == db.seleccionado.cardTitle">
               <td class="text-center">
-                <img src="{{producto.imagePath}}" alt="{{producto.imagePath}}">
+                {{producto.imagePath}}
               </td>
               <td class="text-center">{{producto.name}}</td>
               <td class="text-center">{{producto.description}}</td>
               <td class="text-center">{{producto.price}}</td>
               <td class="text-center">
-                <a href="javascript:void(0);" class="btn btn-info m-2">
+                <a href="javascript:void(0);" class="btn btn-info m-2" (click)="openedit(producto,categoria)">
                   <i class="text-white fas fa-edit"></i>
                 </a>
                 <a href="javascript:void(0);" class="btn btn-danger m-2" (click)="delete(categoria.id,producto.id)">
                   <i class="text-white fas fa-trash"></i>
                 </a>
               </td>
-
             </ng-container>
           </tr>
         </tbody>
@@ -74,6 +76,60 @@
   </div>
 </section>
 
+<div class="modal fade" id="myModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <form [formGroup]="productoformedit" (ngSubmit)="edit()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Editar Producto</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="id">Id</label>
+            <input type="text" class="form-control" id="id" formControlName="id" aria-describedby="id" placeholder="id">
+            <!--<small id="name" class="d-none form-text text-danger">Ingrese el Título.</small>-->
+          </div>
+
+          <div class="form-group">
+            <label for="cardTitle">Nombre</label>
+            <input type="text" class="form-control" id="name" formControlName="name" aria-describedby="name"
+              placeholder="name">
+            <!--<small id="name" class="d-none form-text text-danger">Ingrese el Título.</small>-->
+          </div>
+          <div class="form-group">
+            <label for="cardSubtitle">Descripcion</label>
+            <input type="email" class="form-control" id="cardSubtitle" formControlName="description"
+              placeholder="description">
+          </div>
+          <div class="form-group">
+            <label for="cardSubtitle">Categoria</label>
+            <select class="form-control" id="categoria" formControlName="categoria" [(ngModel)]="db.seleccionado">
+              <option [ngValue]="categoria" *ngFor="let categoria of db.categorias">{{categoria.cardTitle}}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="imagePath">Imagen</label>
+            <input type="text" class="form-control" id="imagePath" formControlName="imagePath" placeholder="Url Imagen">
+          </div>
+
+          <div class="form-group">
+            <label for="price">Precio</label>
+            <input type="number" class="form-control" id="price" formControlName="price" placeholder="price">
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Editar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
 
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -105,8 +161,8 @@
           </div>
           <div class="form-group">
             <label for="cardSubtitle">Categoria</label>
-            <select class="form-control" id="categoria" formControlName="categoria">
-              <option [ngValue]="categoria.id" *ngFor="let categoria of categorias">{{categoria.cardTitle}}
+            <select class="form-control" id="categoria" formControlName="categoria" [(ngModel)]="db.seleccionado">
+              <option [ngValue]="categoria" *ngFor="let categoria of db.categorias">{{categoria.cardTitle}}
               </option>
             </select>
           </div>

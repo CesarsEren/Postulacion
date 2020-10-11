@@ -24,15 +24,6 @@
 
 <section class="content">
   <div class="card m-2">
-    <!-- <div class="card-header">
-     <h3 class="card-title">Projects</h3>
-      <div class="card-tools">
-        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-          <i class="fas fa-minus"></i></button>
-        <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-          <i class="fas fa-times"></i></button>
-      </div> 
-    </div>-->
     <div class="card-body p-2 ">
       <table class="table table-striped projects">
         <thead>
@@ -89,49 +80,85 @@
 
 </section>
 
-<!-- Modal -->
+
+
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Agregar Usuario</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-            aria-hidden="true">&times;</span></button>
+    <form [formGroup]="usuarioform" (ngSubmit)="submit()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Agregar Usuario</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <fieldset>
+                <legend>Datos Personales</legend>
+                <div class="form-group">
+                  <label for="cardTitle">Nombre</label>
+                  <!--is-invalid-->
+                  <input type="text" class="form-control " id="cardTitle" formControlName="name"
+                    aria-describedby="cardTitlehelp" placeholder="Nombre">
+                  <!--small id="cardTitlehelp" *ngIf="categoryform.controls['cardTitle'].invalid"> Campo Requerido</small-->
+                </div>
+
+                <div class="form-group">
+                  <label for="imagem">Celular</label>
+                  <input type="text" class="form-control" id="imagem" formControlName="phoneNumber"
+                    placeholder="phoneNumber">
+                </div>
+                <div class="form-group">
+                  <label for="imagem">Foto</label>
+                  <input type="text" class="form-control" id="imagem" formControlName="photoUrl" placeholder="photoUrl">
+                </div>
+                <div class="form-group">
+                  <label for="imagem">Dirección</label>
+                  <input type="text" class="form-control" id="imagem" formControlName="location" placeholder="location">
+                </div>
+
+                <div class="form-group">
+                  <label for="imagem">Puntos</label>
+                  <input type="number" class="form-control" id="imagem" formControlName="points" placeholder="points">
+                </div>
+              </fieldset>
+            </div>
+            <div class="col-md-6">
+              <fieldset>
+                <legend>Datos Cuenta</legend>
+                <div class="form-group">
+                  <label for="cardSubtitle">Email</label>
+                  <input type="email" class="form-control" id="cardSubtitle" formControlName="email"
+                    placeholder="Email">
+                </div>
+                <div class="form-group">
+                  <label for="cardSubtitle">Password</label>
+                  <input type="password" class="form-control" id="cardSubtitle" formControlName="password"
+                    placeholder="cardSubtitle">
+                </div>
+
+                <div class="form-group">
+                  <label for="imagem">Tipo</label>
+                  <select class="form-control" id="imagem" formControlName="type">
+                    <option value="-1">Seleccione el tipo de usuario</option>
+                    <option value="client">Cliente</option>
+                    <option value="admin">Administrador</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="imagem">Lenguaje</label>
+                  <input type="text" class="form-control" id="imagem" formControlName="language" placeholder="language">
+                </div>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button [disabled]="!usuarioform.valid" type="submit" class="btn btn-primary">Guardar</button>
+        </div>
       </div>
-      <div class="modal-body">
-
-        <form role="form">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Nome</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="nome">
-          </div>
-
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="email">
-          </div>
-
-          <div class="form-group">
-            <label for="exampleInputEmail1">PhoneNumber</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="phoneNumber">
-          </div>
-
-          <div class="form-group">
-            <label for="exampleInputEmail1">Dirección</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="direccion">
-          </div>
-
-          <div class="form-group">
-            <label for="exampleInputEmail1">Nome</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="nome">
-          </div>
-        </form>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
+    </form>
   </div>
 </div>

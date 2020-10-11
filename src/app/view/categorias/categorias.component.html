@@ -47,13 +47,16 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let categoria of categorias">
-            <td class="text-center"><img src="{{categoria.imagem}}" alt="{{categoria.cardTitle}}"></td>
+          <tr *ngFor="let categoria of db.categorias">
+            <td class="text-center">
+              <!--<img src="{{categoria.imagem}}" alt="{{categoria.cardTitle}}">-->
+              {{categoria.imagem}}
+            </td>
             <td class="text-center">{{categoria.cardTitle}}</td>
             <td class="text-center">{{categoria.cardSubtitle}}</td>
             <td class="text-center">{{categoria.menu.length}}</td>
             <td class="text-center">
-              <a href="javascript:void(0);" class="btn btn-info m-2">
+              <a href="javascript:void(0);" class="btn btn-info m-2" (click)="openedit(categoria) ">
                 <i class="text-white fas fa-edit"></i>
               </a>
               <a href="javascript:void(0);" class="btn btn-danger m-2" (click)="delete(categoria.id)">
@@ -73,16 +76,17 @@
     <form [formGroup]="categoryform" (ngSubmit)="submit()">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="myModalLabel">Agregar Usuario</h4>
+          <h4 class="modal-title" id="myModalLabel">Agregar Categoria</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
               aria-hidden="true">&times;</span></button>
         </div>
         <div class="modal-body">
           <div class="form-group">
             <label for="cardTitle">cardTitle</label>
-            <input type="text" class="form-control" id="cardTitle" formControlName="cardTitle"
-              aria-describedby="emailHelp" placeholder="cardTitle">
-            <small id="emailHelp" class="d-none form-text text-danger">Ingrese el Título.</small>
+            <!--is-invalid-->
+            <input type="text" class="form-control " id="cardTitle" formControlName="cardTitle"
+              aria-describedby="cardTitlehelp" placeholder="cardTitle">
+            <!--small id="cardTitlehelp" *ngIf="categoryform.controls['cardTitle'].invalid"> Campo Requerido</small-->
           </div>
           <div class="form-group">
             <label for="cardSubtitle">cardSubtitle</label>
@@ -97,7 +101,44 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button [disabled]="!categoryform.valid" type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div class="modal fade" id="myModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <form [formGroup]="categoryformedit" (ngSubmit)="edit()">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Editar Categoria</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="cardTitle">cardTitle</label>
+            <input type="text" class="form-control" id="cardTitle" formControlName="cardTitle"
+              aria-describedby="emailHelp" placeholder="cardTitle">
+            <!--small id="emailHelp" class="d-none form-text text-danger">Ingrese el Título.</small-->
+          </div>
+          <div class="form-group">
+            <label for="cardSubtitle">cardSubtitle</label>
+            <input type="email" class="form-control" id="cardSubtitle" formControlName="cardSubtitle"
+              placeholder="cardSubtitle">
+          </div>
+          <div class="form-group">
+            <label for="imagem">imagem</label>
+            <input type="text" class="form-control" id="imagem" formControlName="imagem" placeholder="imagem">
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          <button type="submit" class="btn btn-primary">Editar</button>
         </div>
       </div>
     </form>

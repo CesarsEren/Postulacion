@@ -3,25 +3,48 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { FACELIST_API } from "../app.api";
 import { Category } from "../model/category.interface";
-import { Product } from '../model/producto.interface';
+import { Product } from "../model/producto.interface";
 //import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
 export class CategoriasService {
-  constructor(private http: HttpClient) { }
+  categorias: Category[] = [];
+  seleccionado: Category;
 
-  public getCategorias(): Observable<Category[]> {
-    return this.http.get<Category[]>(`${FACELIST_API}/category`);
+  productos: number = 0;
+  constructor(private http: HttpClient) {
+    this.getCategorias(true);
   }
-  public getCategoria(id): Observable<Category> {
+
+  public getCategorias(firsttime: boolean) {
+    this.productos = 0;
+    this.http.get<Category[]>(`${FACELIST_API}/category`).subscribe((data) => {
+      if (firsttime) {
+        this.seleccionado = data[0];
+      } else {
+        data.forEach((da) => {
+          if (this.seleccionado.id == da.id) {
+            this.seleccionado = da;
+          }
+        });
+      }
+      this.categorias = data;
+      data.forEach((element) => {
+        this.productos += element.menu.length;
+      });
+    });
+  }
+
+  public getCategoria(id: number): Observable<Category> {
     return this.http.get<Category>(`${FACELIST_API}/category/${id}`);
   }
 
   public addCategory(data: Category) {
     return this.http.post(`${FACELIST_API}/category`, data);
   }
+
   public deleteCategory(id: number) {
     return this.http.delete(`${FACELIST_API}/category/${id}`);
   }

@@ -5,5 +5,5 @@ export interface Category {
   cardSubtitle: string;
   cardTitle: string;
   imagem: string;
-  menu: Product[];
+  menu?: Product[];
  }

@@ -9,5 +9,5 @@ export interface User {
   photoUrl?: string;
   location?: string;
   points?: number;
-  settingsUser?: { language?: string; type?: string };
+  settingsUser: { language: string; type: string };
 }
